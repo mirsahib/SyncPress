@@ -1,4 +1,4 @@
-### WordPress Docker Dev Environment with Live Reload
+## SyncPress
 =================================================
 
 A minimal Docker-based setup for WordPress plugin and theme development using the WordPress source code (included in repo), MySQL, phpMyAdmin, and BrowserSync for live reloading.
@@ -6,6 +6,7 @@ A minimal Docker-based setup for WordPress plugin and theme development using th
 ### Project Structure
 -----------------
 
+```bash
 .
 ├── wordpress/          # WordPress source
 ├── browsersync/        # BrowserSync config and environment
@@ -13,19 +14,22 @@ A minimal Docker-based setup for WordPress plugin and theme development using th
 ├── Dockerfile          # Custom minimal PHP Apache setup
 └── docker-compose.yml  # Multi-service orchestration
 
+```
 ### Prerequsite 
 - You need to have docker installed in you system
 
 ### How to Start
 ------------
 1. Clone the repository
-    ```
-    git@github.com:mirsahib/SyncPress.git
+    ```bash
+    git clone git@github.com:mirsahib/SyncPress.git
     cd SyncPress
     ```
 2. Build and start all containers:
 
+   ```bash
    docker-compose up --build
+   ```
 
 3. Access services:
 
