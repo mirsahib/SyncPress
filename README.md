@@ -52,3 +52,12 @@ Plugin/Theme Development
 - Themes:  wordpress/wp-content/themes/your-theme/
 
 Live reload will trigger on changes to `.php`, `.js`, or `.css` files.
+
+### Troubleshoot
+- Can't create file and folder in wordpress directory
+```bash
+sudo chown -R $USER:$USER ./wordpress
+sudo chmod -R u+rw ./wordpress
+docker-compose down
+docker-compose up --build
+```
