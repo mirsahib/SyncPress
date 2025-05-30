@@ -16,18 +16,29 @@ A minimal Docker-based setup for WordPress plugin and theme development using th
 
 ```
 ### Prerequsite 
-- You need to have docker installed in you system
+- You need to have [docker](https://docs.docker.com/get-started/get-docker/) installed in you system
 
 ### How to Start
 ------------
-1. Clone the repository
+1. Clone (or use this repo as template) the repository
     ```bash
     git clone git@github.com:mirsahib/SyncPress.git
     cd SyncPress
     ```
+   - Click on `Use this template` to create a new repository in you gihub.
+2. Rename the .env.d file to .env file and and change the
+   ```
+   ROOT_DIR=<Your Root Directory Name>
+   APP_CONTAINER=${ROOT_DIR}_app
+   DB_CONTAINER=${ROOT_DIR}_db
+   BS_CONTAINER=${ROOT_DIR}_browsersync
+   PMA_CONTAINER=${ROOT_DIR}_phpmyadmin
+   ```
+
 2. Build and start all containers:
 
    ```bash
+   docker ps prune -a # just to be sure no duplicate container exist
    docker-compose up --build
    ```
 

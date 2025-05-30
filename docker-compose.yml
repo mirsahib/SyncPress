@@ -3,7 +3,7 @@ version: '3.8'
 services:
   app:
     build: .
-    container_name: wordpress_dev
+    container_name: ${APP_CONTAINER:-wordpress_dev}
     ports:
       - "8000:80"
     volumes:
@@ -11,14 +11,14 @@ services:
     depends_on:
       - db
     environment:
-      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_HOST: ${DB_CONTAINER:-wordpress_db}:3306
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
 
   browsersync:
     image: node:18-alpine 
-    container_name: browsersync
+    container_name: ${BS_CONTAINER:-browsersync}
     working_dir: /app
     volumes:
       - ./browsersync:/app
@@ -32,8 +32,8 @@ services:
       - app
 
   db:
-    image: mysql:5.7
-    container_name: wordpress_db
+    image: mysql:9
+    container_name: ${DB_CONTAINER:-wordpress_db}
     restart: always
     environment:
       MYSQL_DATABASE: wordpress
@@ -45,7 +45,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
+    container_name: ${PMA_CONTAINER:-phpmyadmin}
     ports:
       - "8080:80"
     environment:
